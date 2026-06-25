@@ -16,7 +16,7 @@ Status: Complete
 
 ## Milestone 1: Detector Prototype
 
-Status: Current
+Status: Ready for Roblox Studio verification
 
 Branch: `feature/detector-prototype`
 

@@ -39,4 +39,18 @@ Read these before coding:
 
 ## Current Status
 
-Initial Rojo scaffold is ready. The next step is `feature/detector-prototype`, which will add the first playable Beach detector loop.
+The first detector prototype is implemented on `feature/detector-prototype`.
+
+## Prototype Controls
+
+- Press `E` or click `Scan` to check signal strength.
+- Move around the Beach until the signal is strong.
+- Press `R` or click `Dig` to dig when close enough.
+- Click `Sell Inventory` to sell found items for coins.
+- Click `Range` or `Luck` to buy detector upgrades when you have enough coins.
+
+## Prototype Notes
+
+- Treasure spots are created by the server when the game starts.
+- Rewards, coins, selling, and upgrades are server-authoritative.
+- Inventory is currently an in-memory table and does not save between sessions.

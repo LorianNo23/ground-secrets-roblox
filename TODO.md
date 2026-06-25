@@ -12,6 +12,7 @@
 
 Branch: `feature/detector-prototype`
 
+- [x] Fix `ClientMain` requiring `Controllers` from the wrong path, preventing HUD startup.
 - [x] Fix detector HUD and input not appearing/responding in Roblox Studio.
 - [x] `feature/treasure-item-config`: Define treasure item config.
 - [x] `feature/detector-upgrade-config`: Define detector upgrade config.

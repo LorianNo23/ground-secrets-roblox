@@ -25,6 +25,8 @@ Follow them unless the user gives a newer instruction.
 - Before writing gameplay code, confirm the relevant TODO item, branch, dependencies, and acceptance criteria.
 - A feature is not done until its TODO acceptance criteria are satisfied or the remaining gap is written as a bug or follow-up TODO.
 - Prefer one small, testable gameplay change per commit.
+- Keep tasks small enough to complete in roughly one coding session.
+- Avoid adding broad frameworks before at least two concrete uses exist.
 
 ## Rojo Layout
 
@@ -68,6 +70,11 @@ Client controllers should live under `src/StarterPlayer/StarterPlayerScripts/Con
 - Split approved features into small tasks that fit roughly one coding session.
 - Include dependencies and acceptance criteria for approved tasks.
 - Keep `Possible Future Ideas` separate from approved TODO items.
+- Validate every new idea against the project philosophy before implementation.
+- Keep advanced systems in `Possible Future Ideas` unless they are needed for the next playable milestone.
+- The first playable goal remains: scan, dig, find item, inventory, sell, upgrade.
+- Avoid feature creep by improving an existing loop step before adding a new loop outside the core.
+- Basic monetization ideas must be cosmetic or non-pay-to-win, and should remain future planning until the free core loop is strong.
 
 ## Current Architecture Rules
 

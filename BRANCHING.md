@@ -27,17 +27,37 @@
 - `feature/detector-prototype-polish`
 - `feature/item-system`
 - `feature/inventory`
-- `feature/collection-log`
-- `feature/cleaning-identifying`
+- `feature/collection-book`
+- `feature/unique-find-history`
+- `feature/item-condition-cleaning`
 - `feature/shop-upgrades`
 - `feature/save-data`
 - `feature/digging`
 - `feature/detector-system`
+- `feature/ground-types`
 - `feature/ui`
 - `feature/world-progression`
+- `feature/treasure-maps`
+- `feature/relic-sets`
 - `feature/audio-feedback`
+- `feature/backpack-limits`
+- `feature/npc-quests`
+- `feature/achievements-daily-tasks`
 - `feature/map-polish`
 - `feature/economy-balance`
+- `feature/cosmetics`
+
+## Later Possible Branches
+
+Create these only if the user approves the matching Possible Future Ideas:
+
+- `feature/weather-events`
+- `feature/museum`
+- `feature/secret-areas`
+- `feature/cleaning-minigame`
+- `feature/npc-appraiser`
+- `feature/limited-time-events`
+- `feature/monetization`
 
 ## Branch Purpose
 
@@ -53,22 +73,50 @@ Make item definitions stable enough for inventory, collection, cleaning, selling
 
 Track item stacks, duplicate counts, inventory summary data, and sellable value.
 
-### `feature/collection-log`
+### `feature/collection-book`
 
-Track discovered items and display collection progress.
+Track discovered items and display Pokedex-style item progress.
 
-### `feature/cleaning-identifying`
+### `feature/unique-find-history`
 
-Add the missing clean and identify steps between digging and final collection/selling.
+Store special find metadata such as found by, found date, map, condition, age, material, and rarity.
+
+### `feature/item-condition-cleaning`
+
+Add dirty item state, condition, simple cleaning, and identify reveal.
 
 ### `feature/shop-upgrades`
 
-Improve detector upgrades and shop presentation.
+Improve detector upgrades, shop presentation, detector tiers, and simple detector modules.
 
 ### `feature/save-data`
 
 Persist the player progression data after the data shape is stable.
 
+### `feature/digging`
+
+Improve dig timing, cooldowns, critical dig bonus, and feedback.
+
+### `feature/detector-system`
+
+Refine scan logic, signal thresholds, scan cooldowns, directional hints, and sound hooks.
+
+### `feature/ground-types`
+
+Add ground type configuration for sand, grass, snow, mud, and stone.
+
 ### `feature/world-progression`
 
 Unlock new maps and connect area requirements to collection and upgrades.
+
+### `feature/treasure-maps`
+
+Add treasure maps that lead to special hidden finds.
+
+### `feature/relic-sets`
+
+Add multi-part relic collections with completion rewards.
+
+### `feature/cosmetics`
+
+Add cosmetic-only rewards such as detector skins, shovel skins, backpacks, titles, and trails.

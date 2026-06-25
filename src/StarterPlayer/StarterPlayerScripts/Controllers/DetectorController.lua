@@ -9,13 +9,12 @@ local UpgradeConfig = require(ReplicatedStorage.Shared.Config.UpgradeConfig)
 local DetectorController = {}
 
 local player = Players.LocalPlayer
-local remotes = ReplicatedStorage:WaitForChild(RemoteNames.Folder)
-local scanRemote = remotes:WaitForChild(RemoteNames.Scan)
-local digRemote = remotes:WaitForChild(RemoteNames.Dig)
-local sellAllRemote = remotes:WaitForChild(RemoteNames.SellAll)
-local buyUpgradeRemote = remotes:WaitForChild(RemoteNames.BuyUpgrade)
-local getStateRemote = remotes:WaitForChild(RemoteNames.GetState)
-local stateChangedRemote = remotes:WaitForChild(RemoteNames.StateChanged)
+local scanRemote
+local digRemote
+local sellAllRemote
+local buyUpgradeRemote
+local getStateRemote
+local stateChangedRemote
 
 local gui
 local signalFill
@@ -31,6 +30,15 @@ local currentState = nil
 
 local function setMessage(message: string)
 	messageText.Text = message
+end
+
+local function remotesReady(): boolean
+	return scanRemote ~= nil
+		and digRemote ~= nil
+		and sellAllRemote ~= nil
+		and buyUpgradeRemote ~= nil
+		and getStateRemote ~= nil
+		and stateChangedRemote ~= nil
 end
 
 local function formatItem(item)
@@ -169,7 +177,7 @@ local function createGui()
 
 	messageText = coinsText:Clone()
 	messageText.LayoutOrder = 7
-	messageText.Text = "E: scan | R: dig"
+	messageText.Text = "Connecting detector..."
 	messageText.TextColor3 = Color3.fromRGB(174, 205, 214)
 	messageText.Parent = panel
 
@@ -188,6 +196,11 @@ local function createGui()
 	local sellButton = createButton("Sell Inventory", 10)
 	sellButton.Parent = panel
 	sellButton.Activated:Connect(function()
+		if not remotesReady() then
+			setMessage("Detector is still connecting.")
+			return
+		end
+
 		local result = sellAllRemote:InvokeServer()
 		setMessage(result.Message)
 	end)
@@ -195,6 +208,11 @@ local function createGui()
 	rangeButton = createButton("Range Lv 0", 11)
 	rangeButton.Parent = panel
 	rangeButton.Activated:Connect(function()
+		if not remotesReady() then
+			setMessage("Detector is still connecting.")
+			return
+		end
+
 		local result = buyUpgradeRemote:InvokeServer("Range")
 		setMessage(result.Message)
 	end)
@@ -202,12 +220,22 @@ local function createGui()
 	luckButton = createButton("Luck Lv 0", 12)
 	luckButton.Parent = panel
 	luckButton.Activated:Connect(function()
+		if not remotesReady() then
+			setMessage("Detector is still connecting.")
+			return
+		end
+
 		local result = buyUpgradeRemote:InvokeServer("Luck")
 		setMessage(result.Message)
 	end)
 end
 
 function DetectorController.Scan()
+	if not remotesReady() then
+		setMessage("Detector is still connecting.")
+		return
+	end
+
 	local result = scanRemote:InvokeServer()
 	local strength = result.Strength or 0
 
@@ -224,6 +252,11 @@ function DetectorController.Scan()
 end
 
 function DetectorController.Dig()
+	if not remotesReady() then
+		setMessage("Detector is still connecting.")
+		return
+	end
+
 	local result = digRemote:InvokeServer()
 	setMessage(result.Message)
 end
@@ -231,8 +264,28 @@ end
 function DetectorController.Start()
 	createGui()
 
+	local remotes = ReplicatedStorage:WaitForChild(RemoteNames.Folder, 10)
+
+	if remotes == nil then
+		setMessage("Detector remotes were not found. Check server Output.")
+		return
+	end
+
+	scanRemote = remotes:WaitForChild(RemoteNames.Scan, 10)
+	digRemote = remotes:WaitForChild(RemoteNames.Dig, 10)
+	sellAllRemote = remotes:WaitForChild(RemoteNames.SellAll, 10)
+	buyUpgradeRemote = remotes:WaitForChild(RemoteNames.BuyUpgrade, 10)
+	getStateRemote = remotes:WaitForChild(RemoteNames.GetState, 10)
+	stateChangedRemote = remotes:WaitForChild(RemoteNames.StateChanged, 10)
+
+	if not remotesReady() then
+		setMessage("Detector remotes are incomplete. Check server Output.")
+		return
+	end
+
 	stateChangedRemote.OnClientEvent:Connect(updateState)
 	updateState(getStateRemote:InvokeServer())
+	setMessage("E: scan | R: dig")
 
 	UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then

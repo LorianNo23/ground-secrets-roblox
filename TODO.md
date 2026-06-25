@@ -12,6 +12,7 @@
 
 Branch: `feature/detector-prototype`
 
+- [x] Fix detector HUD and input not appearing/responding in Roblox Studio.
 - [x] `feature/treasure-item-config`: Define treasure item config.
 - [x] `feature/detector-upgrade-config`: Define detector upgrade config.
 - [x] `feature/server-inventory-service`: Create server inventory service.
@@ -28,3 +29,7 @@ Branch: `feature/detector-prototype`
 - [x] Update `README.md` with completed prototype instructions after Milestone 1.
 - [ ] Keep `PRIORITY.md` updated as features are completed.
 - [ ] Add tutorial files only if the user asks for tutorials.
+
+## Possible TODO
+
+- No unapproved ideas yet.

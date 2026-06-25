@@ -5,4 +5,10 @@ local DetectorController = require(script.Controllers.DetectorController)
 
 print(`{GameConfig.GameName} client started`)
 
-DetectorController.Start()
+local success, message = pcall(function()
+	DetectorController.Start()
+end)
+
+if not success then
+	warn(`Detector client failed to start: {message}`)
+end

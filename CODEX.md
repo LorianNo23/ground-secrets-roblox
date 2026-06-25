@@ -49,6 +49,11 @@ Client controllers should live under `src/StarterPlayer/StarterPlayerScripts/Con
 
 - Keep the five root planning files current.
 - When a meaningful feature is added, update `TODO.md` and `PRIORITY.md` if priorities change.
+- Always update `TODO.md` when finishing work.
+- When a bug is found and cannot be fixed immediately, add it to `TODO.md` as a bug item with enough detail to reproduce it.
+- When the user asks for work, add it to `TODO.md` before or while doing the work.
+- When thinking of a possible new feature, add it under a "Possible TODO" section for user review instead of treating it as approved work.
+- Move a possible TODO into the real TODO list only after the user approves it.
 - If the user asks for tutorials, create them inside `tutorial-output`.
 - Do not create `tutorial-output` unless the user asks for a tutorial.
 
@@ -64,4 +69,3 @@ For each feature, explain how to test it in Roblox Studio:
 ## Current Development Style
 
 This project is in prototype phase. Favor direct, understandable code. Add abstractions only when they remove real duplication or clarify boundaries.
-
